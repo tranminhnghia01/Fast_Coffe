@@ -9,7 +9,7 @@
 			<div class="col-md-6">
                 @foreach ($category_parent as $val )
                     <div class="category-box">
-                        <a href="#!">
+                        <a href="{{ route('home.book.index') }}">
                             <img src="{{ asset('uploads/categories/'.$val->category_image) }}" alt="" />
                             <div class="content">
                                 <h3>{{ $val->category_name}}</h3>
@@ -23,7 +23,7 @@
                 @foreach ($category as $key=>$val )
                 @if ($key == 2)
                     <div class="category-box category-box-2">
-                        <a href="#!">
+                        <a href="{{ route('home.Product.index') }}">
                             <img src="{{ asset('uploads/categories/'.$val->category_image) }}" alt="" style="height: 100%" />
                             <div class="content">
                                 <h3>{{ $val->category_name}}</h3>

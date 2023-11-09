@@ -128,12 +128,12 @@
                 </a>
                 <ul class="menu-sub">
                   <li class="menu-item">
-                    <a href="{{ route('admin.account-giupviec') }}" class="menu-link">
+                    <a href="{{ route('admin.account-order.index') }}" class="menu-link">
                       <div data-i18n="Accordion">lịch hẹn</div>
                     </a>
                   </li>
                   <li class="menu-item">
-                    <a href="{{ route('admin.account-users.index') }}" class="menu-link">
+                    <a href="{{ route('admin.account-order.index') }}" class="menu-link">
                       <div data-i18n="Accordion">đơn hàng</div>
                     </a>
                   </li>

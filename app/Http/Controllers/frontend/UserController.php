@@ -93,8 +93,9 @@ class UserController extends Controller
 
     public function show_order_details($order_code){
         $order_details = OrderDetails::where('order_code',$order_code)->get();
-        // dd($order_details);
-        return view('frontend.user.order-details')->with(compact('order_details'));
+        $order = Order::where('order_code',$order_code)->first();
+        // dd($order->order_id);
+        return view('frontend.user.order-details')->with(compact('order_details','order'));
     }
 
 
@@ -113,5 +114,38 @@ class UserController extends Controller
         }
 
         return view('frontend.user.order-book-details')->with(compact('book_details','shipping','payment','coupon'));
+    }
+
+    public function book_destroy(Request $request){
+        $book_code = $request->book_code;
+        $book = Book::where('book_code',$book_code)->first();
+        if($book){
+            $book->update(['book_status'=>3]);
+            $msg = 'Hủy đơn đặt lịch thành công!';
+            $style = 'success';
+        }else{
+            $msg = 'Có lỗi xảy ra khi hủy đơn đặt lịch';
+            $style = 'danger';
+        }
+        echo $msg;
+    }
+
+    public function order_destroy(Request $request){
+        $order_code = $request->order_code;
+        $order = Order::where('order_code',$order_code)->first();
+        if($order){
+            $order->update(['order_status'=>3]);
+            $msg = 'Hủy đơn đặt hàng thành công!';
+            $style = 'success';
+        }else{
+            $msg = 'Có lỗi xảy ra khi hủy đơn đặt hàng';
+            $style = 'danger';
+        }
+        echo $msg;
+    }
+
+    public function delete(Request $request){
+        $data = $request->all();
+        print_r($data);
     }
 }

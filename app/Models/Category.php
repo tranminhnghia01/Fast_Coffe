@@ -21,7 +21,7 @@ class Category extends Model
         'category_tags',
     ];
 
-    protected $primary_key = 'id';
+    protected $primaryKey = 'id';
 
     protected $hidden = [
         '_token',

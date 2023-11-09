@@ -35,10 +35,17 @@ Route::prefix('/')->name('home.')->group(function (){
     Route::get('/Shop/Account/order/{order_code}', [App\Http\Controllers\frontend\UserController::class,'show_order_details'])->name('account.order.details');
     Route::get('/Shop/Account/order-book/{book_code}', [App\Http\Controllers\frontend\UserController::class,'show_book_details'])->name('account.book.details');
 
+    Route::post('/Shop/Account/order-book/destroy', [App\Http\Controllers\frontend\UserController::class,'book_destroy'])->name('account.book.destroy');
+
+    Route::post('/Shop/Account/order/destroy', [App\Http\Controllers\frontend\UserController::class,'order_destroy'])->name('account.order.destroy');
+
+
+
+
 
     ///Edit update đơn đặt lịch
-    Route::get('/Shop/Account/order-book/edit/{book_code}', [App\Http\Controllers\frontend\BookController::class,'edit'])->name('account.book.edit');
-    Route::post('/Shop/Account/order-book/update/{book_code}', [App\Http\Controllers\frontend\BookController::class,'update']);
+    // Route::get('/Shop/Account/order-book/edit/{book_code}', [App\Http\Controllers\frontend\BookController::class,'edit'])->name('account.book.edit');
+    // Route::post('/Shop/Account/order-book/update/{book_code}', [App\Http\Controllers\frontend\BookController::class,'update']);
 
 
 
@@ -114,7 +121,9 @@ Route::prefix('/home')->name('admin.')->middleware('admin')->group(function ()
     Route::resource('account-users', App\Http\Controllers\admin\MemberController::class);
     Route::get('/account-giupviec', [App\Http\Controllers\admin\MemberController::class,'Account_Giupviec'])->name('account-giupviec');
 
+    Route::resource('account-order', App\Http\Controllers\admin\OrderController::class);
 
+    Route::get('/account-book/{book_code}', [App\Http\Controllers\admin\OrderController::class,'show_book'])->name('account-book');
 
 
 });

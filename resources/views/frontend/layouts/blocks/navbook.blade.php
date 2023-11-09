@@ -33,47 +33,40 @@
 					<li class="dropdown cart-nav dropdown-slide">
 						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
 								class="tf-ion-android-cart"></i>Cart</a>
-						<div class="dropdown-menu cart-dropdown">
-							<!-- Cart Item -->
-							<div class="media">
-								<a class="pull-left" href="#!">
-									<img class="media-object" src="images/shop/cart/cart-1.jpg" alt="image" />
-								</a>
-								<div class="media-body">
-									<h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>
-									<div class="cart-price">
-										<span>1 x</span>
-										<span>1250.00</span>
-									</div>
-									<h5><strong>$1200</strong></h5>
-								</div>
-								<a href="#!" class="remove"><i class="tf-ion-close"></i></a>
-							</div><!-- / Cart Item -->
-							<!-- Cart Item -->
-							<div class="media">
-								<a class="pull-left" href="#!">
-									<img class="media-object" src="images/shop/cart/cart-2.jpg" alt="image" />
-								</a>
-								<div class="media-body">
-									<h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>
-									<div class="cart-price">
-										<span>1 x</span>
-										<span>1250.00</span>
-									</div>
-									<h5><strong>$1200</strong></h5>
-								</div>
-								<a href="#!" class="remove"><i class="tf-ion-close"></i></a>
-							</div><!-- / Cart Item -->
+                                <div class="dropdown-menu cart-dropdown">
+                                    <!-- Cart Item -->
+                                    @if (Session::get('cart')==true)
+                                        @foreach ($cart as $key => $val)
+                                        @php
+                                $image = json_decode($val->options->image);
+                                @endphp
+                                        <div class="media">
+                                            <a class="pull-left" href="{{ asset('uploads/products/'.$image[0]) }}">
+                                                <img class="media-object" src="{{ asset('uploads/products/'.$image[0]) }}" alt="image" />
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading"><a href="#!">{{ $val->name }}</a></h4>
+                                                <div class="cart-price">
+                                                    <span>{{ $val->qty }} x</span>
+                                                    <span>{{ $val->price }}</span>
+                                                </div>
+                                                <h5><strong>{{ $val->qty * $val->price }}</strong></h5>
+                                            </div>
+                                            <a href="#!" class="remove"><i class="tf-ion-close"></i></a>
+                                        </div><!-- / Cart Item -->
 
-							<div class="cart-summary">
-								<span>Total</span>
-								<span class="total-price">$1799.00</span>
-							</div>
-							<ul class="text-center cart-buttons">
-								<li><a href="cart.html" class="btn btn-small">View Cart</a></li>
-								<li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>
-							</ul>
-						</div>
+                                        @endforeach
+                                    @endif
+                                    <!-- Cart Item -->
+                                    <div class="cart-summary">
+                                        <span>Tổng :</span>
+								        <span class="total-price">{{ Cart::pricetotal() }} <sup>đ</sup> </span>
+                                    </div>
+                                    <ul class="text-center cart-buttons">
+                                        <li><a href="{{ route('home.show-cart') }}" class="btn btn-small">Chi tiết</a></li>
+                                        <li><a href="{{ route('home.checkout') }}" class="btn btn-small btn-solid-border">Thanh Toán</a></li>
+                                    </ul>
+                                </div>
 
 					</li><!-- / Cart -->
 
@@ -131,19 +124,15 @@
 					</li><!-- / Home -->
 
                     <li class="dropdown ">
-						<a href="{{ route('home.index') }}">Shop</a>
+						<a href="{{ route('home.index') }}">Dịch vụ</a>
 					</li><!-- / Home -->
 
                     <li class="dropdown ">
-						<a href="{{ route('home.index') }}">Page</a>
+						<a href="{{ route('home.index') }}">bài viết</a>
 					</li><!-- / Home -->
 
                     <li class="dropdown ">
-						<a href="{{ route('home.index') }}">Blog</a>
-					</li><!-- / Home -->
-
-                    <li class="dropdown ">
-						<a href="{{ route('home.index') }}">Element</a>
+						<a href="{{ route('home.index') }}">Hợp tác với chúng tôi</a>
 					</li><!-- / Home -->
 
 

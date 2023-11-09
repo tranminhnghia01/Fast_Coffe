@@ -21,7 +21,7 @@ class Comment extends Model
         'image',
     ];
 
-    protected $primary_key = 'id';
+    protected $primaryKey = 'id';
 
     protected $hidden = [
         '_token',

@@ -24,7 +24,7 @@ class Order extends Model
         'order_code',
     ];
 
-    protected $primary_key = 'order_id';
+    protected $primaryKey = 'order_id';
 
     protected $hidden = [
         '_token',

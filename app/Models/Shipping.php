@@ -23,7 +23,7 @@ class Shipping extends Model
 
     ];
 
-    protected $primary_key = 'id';
+    protected $primaryKey = 'id';
 
     protected $hidden = [
         '_token',

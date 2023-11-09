@@ -27,7 +27,7 @@ class Book extends Model
         'book_notes',
     ];
 
-    protected $primary_key = 'book_id';
+    protected $primaryKey = 'book_id';
 
     protected $hidden = [
         '_token',

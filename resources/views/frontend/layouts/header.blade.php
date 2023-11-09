@@ -38,9 +38,7 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
 
-
-
-
+  <link rel="stylesheet" href="{{ asset('frontend/css/sweetalert.css') }}">
 
 </head>
 

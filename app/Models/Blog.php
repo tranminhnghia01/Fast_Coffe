@@ -21,7 +21,7 @@ class Blog extends Model
         'blog_status'
     ];
 
-    protected $primary_key = 'id';
+    protected $primaryKey = 'id';
 
     protected $hidden = [
         '_token',

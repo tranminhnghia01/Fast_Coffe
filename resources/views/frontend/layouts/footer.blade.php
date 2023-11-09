@@ -26,6 +26,49 @@
 
     <!-- Main Js File -->
     <script src="{{ asset('frontend/js/script.js') }}"></script>
+    <script src="{{ asset('frontend/js/sweetalert.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.destroy-book').on('click',function(e){
+                e.preventDefault(); //cancel default action
+
+        //Recuperate href value
+
+        //pop up
+        swal({
+            title: "Hủy ??",
+            text: 'Bạn có chắc muốn hủy đơn đặt lịch này!',
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            var book_code = $(this).data('book-code');
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url : "{{route('home.account.book.destroy')}}",
+                method: 'POST',
+                data:{book_code:book_code,_token:_token},
+                success:function(data){
+                    swal("Thành công! Đơn đặt lịch của bạn đã được hủy!", {
+                        icon: "success",
+                        });
+                        window.setTimeout(function() {
+                            location.reload();
+                        },3000);
+                    }
+                });
+          } else {
+            swal("Thoát thao tác thành công!");
+          }
+        });
+
+
+            });
+        });
+    </script>
 
   <script>
 

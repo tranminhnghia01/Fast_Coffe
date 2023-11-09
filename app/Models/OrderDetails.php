@@ -21,7 +21,7 @@ class OrderDetails extends Model
         'product_name',
     ];
 
-    protected $primary_key = 'order_details_id';
+    protected $primaryKey = 'order_details_id';
 
     protected $hidden = [
         '_token',

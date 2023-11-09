@@ -1,7 +1,11 @@
 @extends('frontend.user.dashboard')
 @section('profile')
 <div class="dashboard-wrapper user-dashboard">
-
+    @if (session('msg'))
+<div class="alert alert-{{session('style')}}">
+    {{ session('msg') }}
+</div>
+@endif
     <form action="" method="POST" class="checkout-form">
         @csrf
         <div class="product-checkout-details">
@@ -71,7 +75,16 @@
                             @endswitch
                             <td>
                                 <div class="btn-group" role="group">
-                                  <a type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"> Hủy</i></a>
+                                    <form >
+                                        @csrf
+
+                                        @if ($book_details->book_status == 4)
+                                    <button type="button"  class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"> Đánh_giá</i></button>
+                                    @else
+                                        <button type="button" class="btn btn-default destroy-book" data-book-code="{{ $book_details->book_code }}"><i class="tf-ion-close" aria-hidden="true">Hủy</i></button>
+                                    @endif
+                                    </form>
+
                                 </div>
                               </td>
                     </tr>
@@ -81,4 +94,5 @@
         </table>
     </div>
 </div>
+
 @endsection

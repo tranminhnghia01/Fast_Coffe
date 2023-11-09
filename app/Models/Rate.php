@@ -18,7 +18,7 @@ class Rate extends Model
         'rate',
     ];
 
-    protected $primary_key = 'id';
+    protected $primaryKey = 'id';
 
     protected $hidden = [
         '_token',
